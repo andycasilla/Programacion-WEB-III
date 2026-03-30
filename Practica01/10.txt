@@ -1,0 +1,4 @@
+¿Cuando es conveniente utilizar un callback, y cuando es necesario utilizar una promesa?
+
+se usa callback para hacer operaciones es simple, sencialla y corta
+se usa promesa para cuando se hace procesos asnincronos mas complejos, varias estapas y dependencias
