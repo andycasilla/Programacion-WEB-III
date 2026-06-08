@@ -1,0 +1,77 @@
+CREATE DATABASE techstore;
+USE techstore;
+
+-- TABLA USUARIOS
+
+CREATE TABLE usuarios(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    rol VARCHAR(50) DEFAULT 'empleado',
+    estado TINYINT DEFAULT 1
+);
+
+-- TABLA PRODUCTOS
+
+CREATE TABLE productos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    marca VARCHAR(100),
+    categoria VARCHAR(100),
+    precio DECIMAL(10,2),
+    stock INT,
+    descripcion TEXT,
+    imagen TEXT,
+    estado TINYINT DEFAULT 1
+);
+
+-- TABLA CLIENTES
+
+CREATE TABLE clientes(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(30),
+    correo VARCHAR(100),
+    direccion TEXT,
+    estado TINYINT DEFAULT 1
+);
+
+-- TABLA MANTENIMIENTOS
+
+CREATE TABLE mantenimientos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente VARCHAR(100),
+    equipo VARCHAR(100),
+    problema TEXT,
+    estado VARCHAR(50),
+    costo DECIMAL(10,2),
+    activo TINYINT DEFAULT 1
+);
+
+-- TABLA VENTAS
+
+CREATE TABLE ventas(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente VARCHAR(100),
+    producto VARCHAR(100),
+    cantidad INT,
+    total DECIMAL(10,2),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    activo TINYINT DEFAULT 1
+);
+
+-- TABLA LOGS DE ACCESO
+
+CREATE TABLE logs_acceso(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100),
+    ip VARCHAR(100),
+    evento VARCHAR(50),
+    navegador TEXT,
+    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- USUARIO ADMIN INICIAL
+-- Contraseña: Admin123*
+-- Debes registrar este usuario desde tu formulario para que se guarde cifrada con bcrypt.
